@@ -1,0 +1,26 @@
+query RunInput {
+  cart {
+    buyerIdentity {
+      customer {
+        numberOfOrders
+        tag: hasAnyTag(tags: ["disable"])
+        snowboard: hasAnyTag(tags: ["sample-the-archived-snowboard"])
+        # hasTags(tags: "blocked")
+      }
+    }
+    cost {
+      subtotalAmount {
+        amount
+      }
+    }
+    lines {
+      merchandise {
+        ... on ProductVariant {
+          product {
+            handle
+          }
+        }
+      }
+    }
+  }
+}
